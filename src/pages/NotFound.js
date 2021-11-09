@@ -1,10 +1,11 @@
+import React from "react";
+
 const NotFound = () => {
   return (
-    <div className="m-5">
-      <h1 className="text-center">Not Found</h1>
+    <div>
+      <h1 className="not-found">Not found</h1>
     </div>
-
-  )
-
+  );
 };
-export default NotFound
+
+export default NotFound;
