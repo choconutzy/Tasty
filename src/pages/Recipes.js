@@ -1,8 +1,10 @@
+import React from "react";
+
 const Recipes = () => {
   return (
-    <div className="m-5">
-      <h1 className="text-center">Recipes</h1>
+    <div>
+      <h1 className="recipes">Recipes</h1>
     </div>
   );
-}  
-export default Recipes
+};
+export default Recipes;

@@ -1,9 +1,11 @@
-const MyRecipes = () =>{
-    return (
-    <div className="m-5">
-        <h1 className="text-center">My Recipes</h1>
-      </div>
-    )
-}
+import React from "react";
 
-export default MyRecipes
+const MyRecipes = () => {
+  return (
+    <div>
+      <h1 className="my-recipes">My Recipes</h1>
+    </div>
+  );
+};
+
+export default MyRecipes;

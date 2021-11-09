@@ -1,9 +1,10 @@
-const Home = () =>{
+import React from "react";
+const Home = () => {
   return (
-  <div className="m-5">
-      <h1 className="text-center">Home</h1>
+    <div>
+      <h1 className="home">Home</h1>
     </div>
-  )
-}
+  );
+};
 
-export default Home
+export default Home;
