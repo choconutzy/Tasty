@@ -1,0 +1,185 @@
+:root {
+  font-family: sans-serif;
+  text-align: center;
+  --primary: #f7c325;
+  background: #161616;
+  color: #e8e8e8;
+  background-image: linear-gradient(-45deg, #090a0c 0%, #282b2c 100%);
+}
+.feature.card {
+  box-shadow: 5px;
+  top: 10px;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+}
+
+
+.m-sm{
+  margin:10px;
+}
+
+.feature.card:hover,
+button:hover {
+  box-shadow: 20px;
+  top: -10px;
+  transition: 0.7s;
+  transform: scale(1.05);
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+}
+
+footer .footer-menus {
+  margin-bottom: 30px;
+}
+footer .footer-menus ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+footer .footer-menus ul li {
+  margin-bottom: 10px;
+}
+footer .footer-menus ul i {
+  color: #ffffff;
+  font-size: 12px;
+  margin-right: 3px;
+}
+footer .footer-menus ul a {
+  color: #fff;
+  text-decoration: none;
+}
+footer .footer-menus ul a:hover {
+  color: var(--primary);
+}
+
+.mt-3 {
+  margin-top: 10px;
+}
+
+footer .newsletter form {
+  margin-top: 30px;
+  background: #3a3a3a;
+  padding: 6px 10px;
+  position: relative;
+  border-radius: 50px;
+  border: 1px solid #3a3a3a;
+}
+footer .newsletter form input[type="email"] {
+  border: 0;
+  padding: 5px;
+  background: #3a3a3a;
+  color: #fff;
+}
+footer .newsletter form input[type="email"]:focus {
+  outline: none;
+}
+footer .newsletter form input[type="submit"] {
+  position: absolute;
+  top: -1px;
+  right: -1px;
+  bottom: -1px;
+  border: 0;
+  font-size: 16px;
+  background: var(--primary);
+  color: #000;
+  border-bottom-right-radius: 50px;
+  border-top-right-radius: 50px;
+}
+footer .newsletter form input[type="submit"]:hover {
+  background: var(--primary);
+}
+.footer-bottom {
+  padding: 20px 0px;
+}
+footer .footer-bottom a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+footer .social-links a {
+  font-size: 17px;
+  display: inline-block;
+  background: #28251f;
+  color: #fff;
+  line-height: 1;
+  padding: 5px 5px;
+  margin-right: 5px;
+  border-radius: 100%;
+  text-align: center;
+  width: 36px;
+  height: 36px;
+  transition: 0.4s;
+}
+
+.icon {
+  margin-top: 8px;
+  color: #e8e8e8;
+}
+
+footer .social-links a :hover {
+  color: #161616;
+}
+
+footer .social-links a:hover {
+  background: var(--primary);
+}
+
+@media screen and (max-width: 920px) {
+  .img.jumbotron {
+    order: -1;
+  }
+  .button{
+    display:flex;
+    text-align:center;
+    justify-items:center;
+    justify-content:center;
+  }
+  .desc {
+    order: 2;
+    text-align:center;
+  }
+  .jumbotron {
+    /* align-content: center; */
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items:center;
+    text-align:center;
+  }
+  .desc.content{
+    text-align:center;
+    width:100%;
+  }
+  .desc.item {
+    text-align: center;
+    padding-top: 0;
+    justify-content:center;
+  }
+  .img.jumbotron.item {
+    width: 100%;
+  }
+  .feature {
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin: 0;
+  }
+  .feature.card {
+    width: 50%;
+    margin:1%;
+
+  }
+  .footer-flex {
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+  }
+  .pop-recipe-item{
+    /* width:100px; */
+  }
+}
+
+@media screen and (max-width: 615px){
+  .feature.card{
+    width:100%;
+    margin:2%;
+  }
+}

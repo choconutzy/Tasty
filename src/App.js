@@ -9,6 +9,7 @@ import Recipes from "./pages/Recipes";
 import SignIn from "./pages/SignIn";
 import SignUp from "./pages/SignUp";
 import NotFound from "./pages/NotFound";
+
 function App() {
   return (
     <Router>
