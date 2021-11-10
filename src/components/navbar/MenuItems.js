@@ -1,12 +1,14 @@
 export const MenuItems = [
   {
     title: "Username",
-    path: "/",
+    path: "/profil",
     cName: "dropdown-link",
+    icon: "fas fa-user-circle",
   },
   {
-    title: "sign-out",
-    path: "/sign-out",
+    title: "Sign-out",
+    path: "/sign-in",
     cName: "dropdown-link",
+    icon: "fas fa-sign-out",
   },
 ];

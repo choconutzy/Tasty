@@ -1,10 +1,13 @@
 import React, { useState } from "react";
 import Button from "./Button";
-import { Link, NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import "./Navbar.css";
 import Dropdown from "./Dropdown";
 import logo from "../../images/Logo.png";
 import { StyledLogo, StyledNavLink } from "../../styles/Navbar";
+
+// hide navbar on some pages
+const pathsToHide = ["/sign-up", "/sign-in"];
 
 function Navbar() {
   const [click, setClick] = useState(false);
@@ -27,12 +30,18 @@ function Navbar() {
       setDropdown(false);
     }
   };
+
+  // hide navbar on some pages
+  const { pathname } = useLocation();
+  if (pathsToHide.includes(pathname)) {
+    return <></>;
+  }
   return (
     <>
       <nav className="navbar">
-        <Link to="/" className="navbar-logo">
+        <NavLink to="/" className="navbar-logo">
           <StyledLogo src={logo} alt="Logo" />
-        </Link>
+        </NavLink>
         <div className="menu-icon" onClick={handleClick}>
           <i className={click ? "fas fa-times" : "fas fa-bars"} />
         </div>
@@ -54,17 +63,17 @@ function Navbar() {
             </NavLink>
           </li>
           <li className="nav-item" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-            <Link to="/profile" className="nav-links" onClick={closeMobileMenu}>
+            <NavLink to={pathname} className="nav-links" onClick={closeMobileMenu}>
               <StyledNavLink>
                 <i className="fas fa-user-circle"></i> <i className="fas fa-caret-down" />
               </StyledNavLink>
-            </Link>
+            </NavLink>
             {dropdown && <Dropdown />}
           </li>
           <li className="nav-item">
-            <Link to="/sign-up" className="nav-links-mobile" onClick={closeMobileMenu}>
+            <NavLink to="/sign-up" className="nav-links-mobile" onClick={closeMobileMenu}>
               <StyledNavLink>Sign Up</StyledNavLink>
-            </Link>
+            </NavLink>
           </li>
         </ul>
         <Button />
