@@ -29,6 +29,14 @@
     text-align:left;
 }
 
+.bookmark-container:hover{
+    box-shadow: 20px;
+    top: -10px;
+    transition: 0.4s;
+    transform: scale(1.017);
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 1);
+}
+
 .ingredients{
     list-tyle:none;
     display:flex;
