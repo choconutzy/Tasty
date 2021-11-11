@@ -12,7 +12,6 @@ export const StyledNavLink = styled.div`
   text-decoration: none;
   :hover {
     color: #f7c325 !important;
-    font-weight: 600;
   }
 `;
 

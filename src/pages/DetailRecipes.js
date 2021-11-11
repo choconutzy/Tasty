@@ -99,7 +99,7 @@ const DetailRecipes = () => {
         </BoxTitle>
         <BookmarkIcon onClick={handleClick}>
           <i
-            class={click ? "fas fa-bookmark fa-lg" : "far fa-bookmark fa-lg"}
+            className={click ? "fas fa-bookmark fa-lg" : "far fa-bookmark fa-lg"}
           ></i>
         </BookmarkIcon>
       </MealsContainer>

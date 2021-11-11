@@ -99,7 +99,7 @@ const Home = () => {
               collections
             </p>
           </div>
-          <div className="d-flex justify-content-center">
+          <div className="button-center">
             <StyledButton className="button m-sm">Getting Started</StyledButton>           
           </div>
         </StyledWelcome>
