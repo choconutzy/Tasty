@@ -93,7 +93,7 @@ const Home = () => {
       <JumbotronContainer className="jumbotron">
         <StyledWelcome className="desc content d-flex justify-content-center">
           <div className="desc item">
-            <h2 className="m-sm">Best Recipe Your Meals Days</h2>
+            <h1 className="m-sm">Best Recipe Your Meals Days</h1>
             <p className="m-sm">
               Search your favourite meals recipes and save it to your
               collections
