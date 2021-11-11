@@ -175,6 +175,10 @@ footer .social-links a:hover {
   .pop-recipe-item{
     /* width:100px; */
   }
+  .button-center{
+    display:flex;
+    justify-content:center;
+  }
 }
 
 @media screen and (max-width: 615px){
