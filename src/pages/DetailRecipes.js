@@ -1,9 +1,10 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import useWindowDimensions from "../components/detailRecipes/DetailHelper";
 import styled from "styled-components";
 import "../styles/DetailRecipes.css";
 import IngredientComponent from "../components/detailRecipes/IngredientsComponent";
 import MethodeComponent from "../components/detailRecipes/MethodeComponent";
+import { DetailContext } from "../context/detail-context";
 
 const MealsContainer = styled.div`
   display: flex;
@@ -66,6 +67,7 @@ const DetailRecipes = () => {
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   const { width } = useWindowDimensions();
+  const { detail } = useContext(DetailContext)
   let show = () => {
     if (width > 780) {
       return (
@@ -88,12 +90,12 @@ const DetailRecipes = () => {
       <MealsContainer className="meals box pad">
         <BoxTitle>
           <div className="titles meals">
-            <h2>Creamy Tomato Soup</h2>
+            <h2>{detail.title}</h2>
           </div>
           <StyledImageMeals
             className="image"
             src={
-              "https://www.themealdb.com/images/media/meals/stpuws1511191310.jpg"
+              detail.image
             }
           ></StyledImageMeals>
         </BoxTitle>
