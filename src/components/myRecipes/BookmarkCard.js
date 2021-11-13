@@ -1,7 +1,8 @@
 import React from "react";
 import styled from "styled-components";
 import { useState } from "react";
-import "../../styles/MyRecipes.css"
+import "../../styles/MyRecipes.css";
+import { NavLink } from 'react-router-dom';
 
 const ImageStyled = styled.img`
     width:80%;
@@ -16,6 +17,12 @@ const BookmarkIcon = styled.div`
   justify-content: end;
   margin-top: 2%;
 `;
+
+const linkStyle = {
+    textDecoration: "none",
+    color: '#e8e8e8',
+    cursor: 'pointer'
+}
 
 const BookmarkCard = () => {
     const [click, setClick] = useState(false);
@@ -55,9 +62,8 @@ const BookmarkCard = () => {
                     </div>
                     <div className="more">
                         <div className="to-detail">
-                            <p>Read More</p>
+                            <NavLink to="/detail-recipe" style={linkStyle}>Read More</NavLink>
                         </div>
-
                     </div>
                 </div>
             </div>

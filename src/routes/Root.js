@@ -5,15 +5,17 @@ import Recipes from "../pages/Recipes";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
 import NotFound from "../pages/NotFound";
+import DetailRecipes from "../pages/DetailRecipes";
 
 export default function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
-      <Route path="my-recipes" element={<MyRecipes />} />
+      <Route path="my-recipes/" element={<MyRecipes />} />
       <Route path="recipes" element={<Recipes />} />
       <Route path="sign-in" element={<SignIn />} />
       <Route path="sign-up" element={<SignUp />} />
+      <Route path="detail-recipe" element={<DetailRecipes/>}/>
       <Route path="not-found" element={<NotFound />} />
     </Routes>
   );

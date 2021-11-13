@@ -10,6 +10,11 @@
     text-align: center;
     padding: 0;
   }
+
+  .ingredients{
+    display:flex;
+    flex-direction: column;
+  }
   
   title.box {
     margin: 30%;
@@ -184,7 +189,6 @@
     }
     .nav-item.active {
       border-bottom: 4px solid #f7c325;
-      background: #282b2c;
     }
     .nav-item:hover {
       border-bottom: 4px solid #e8e8e8;
