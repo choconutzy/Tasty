@@ -105,10 +105,10 @@ const DetailRecipes = () => {
       </MealsContainer>
       <DetailContainer className="meals box title box">
         <IngredientContainer className="text-center ingredient">
-          <h4 className="text-start">Ingredients</h4>
+          <h6 className="text-start">Ingredients</h6>
         </IngredientContainer>
         <MethodContainer className="text-center methode">
-          <h4 className="text-start">Method</h4>
+          <h6 className="text-start">Method</h6>
         </MethodContainer>
       </DetailContainer>
       <div className="nav-container">
