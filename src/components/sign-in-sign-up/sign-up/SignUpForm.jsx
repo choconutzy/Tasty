@@ -11,7 +11,7 @@ const SignUpForm = () => {
   }
   return (
     <>
-      <div className="container sign-up-mode">
+      <div className="container-sign sign-up-mode">
         {/* <Form /> */}
         <Panel />
         {!isSubmitted ? <Form submitForm={submitForm} /> : console.log(isSubmitted)}
