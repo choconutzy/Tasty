@@ -42,12 +42,7 @@
 }
 
 .nav-links {
-  /*black-navbar*/
   color: white;
-
-  /* white-navbar */
-  /* color: grey; */
-
   text-decoration: none;
   padding: 0.5rem 1rem;
 }
@@ -59,10 +54,7 @@
 }
 
 .fa-bars {
-  /* black-navbar */
   color: #fff;
-  /* white-navbar */
-  /* color: black; */
 }
 
 .nav-links-mobile {
@@ -156,7 +148,7 @@
     transition: 250ms;
   }
 
-  button {
+  nav button {
     display: none;
   }
 }
