@@ -4,31 +4,48 @@ import { NavLink } from "react-router-dom";
 import { StyledLogo } from "../../../styles/Navbar";
 import logo from "../../../images/Logo.png";
 import Button from "../../UI/Button";
-const Form = () => {
+import useForm from "../useForm";
+import validate from "../ValidateInfo";
+const Form = (submitForm) => {
+  const { handleChange, values, handleSubmit, errors } = useForm(submitForm, validate);
   return (
     <>
       <div className="forms-container">
         <div className="signin-signup">
-          <form action="" className="sign-up-form">
+          <form onSubmit={handleSubmit} className="sign-up-form">
             <StyledLogo src={logo} alt="Logo" />
             <h2 className="title">Sign Up</h2>
-            <div className="input-field">
-              <i className="fas fa-user"></i>
-              <input type="text" placeholder="Username" />
+            <div className="form-input">
+              <div className="input-field">
+                <i className="fas fa-user"></i>
+                <input id="username" type="text" name="username" placeholder="Username" value={values.username} onChange={handleChange} />
+              </div>
+              {errors.username && <p>{errors.username}</p>}
             </div>
-            <div className="input-field">
-              <i className="fas fa-envelope"></i>
-              <input type="email" placeholder="Email" />
+
+            <div className="form-input">
+              <div className="input-field">
+                <i className="fas fa-envelope"></i>
+                <input id="email" name="email" placeholder="Email" value={values.email} onChange={handleChange} />
+              </div>
+              {errors.email && <p>{errors.email}</p>}
             </div>
-            <div className="input-field">
-              <i className="fas fa-lock"></i>
-              <input type="password" placeholder="Password" />
+
+            <div className="form-input">
+              <div className="input-field">
+                <i className="fas fa-lock"></i>
+                <input id="password" type="password" name="password" placeholder="Password" value={values.password} onChange={handleChange} />
+              </div>
+              {errors.password && <p>{errors.password}</p>}
             </div>
-            <div className="input-field">
-              <i className="fas fa-lock"></i>
-              <input type="password" placeholder="Confirm Password" />
+
+            <div className="form-input">
+              <div className="input-field">
+                <i className="fas fa-lock"></i>
+                <input id="password2" type="password" name="password2" placeholder="Confirm Password" value={values.password2} onChange={handleChange} />
+              </div>
+              {errors.password2 && <p>{errors.password2}</p>}
             </div>
-            {/* <input type="submit" value="Sign Up" className="btn solid" /> */}
             <Button label="Sign up" />
             <span className="ask-register-login">
               Already have an account?

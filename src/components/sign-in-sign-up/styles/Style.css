@@ -66,11 +66,15 @@ form.sign-in-form {
   margin-bottom: 10px;
 }
 
-.input-field {
+.form-input {
   max-width: 380px;
   width: 100%;
-  background-color: #f0f0f0;
+  padding: 0 0.4rem;
   margin: 10px 0;
+}
+
+.form-input .input-field {
+  background-color: #f0f0f0;
   height: 55px;
   border-radius: 55px;
   display: grid;
@@ -79,7 +83,7 @@ form.sign-in-form {
   position: relative;
 }
 
-.input-field i {
+.form-input .input-field i {
   text-align: center;
   line-height: 55px;
   color: #acacac;
@@ -87,7 +91,7 @@ form.sign-in-form {
   font-size: 1.1rem;
 }
 
-.input-field input {
+.form-input .input-field input {
   background: none;
   outline: none;
   border: none;
@@ -95,6 +99,12 @@ form.sign-in-form {
   font-weight: 600;
   font-size: 1.1rem;
   color: #333;
+}
+.form-input p {
+  padding: 5px 25px;
+  font-weight: 300;
+  font-size: 0.8rem;
+  color: red;
 }
 
 .input-field input::placeholder {
@@ -283,12 +293,6 @@ form.sign-in-form {
   .panel p {
     font-size: 0.7rem;
     padding: 0.5rem 0;
-  }
-
-  .btn.transparent {
-    width: 110px;
-    height: 35px;
-    font-size: 0.7rem;
   }
 
   .container:before {
