@@ -7,7 +7,7 @@ import Panel from "./Panel";
 const SignInForm = () => {
   return (
     <>
-      <div className="container">
+      <div className="container-sign">
         <Form />
         <Panel />
       </div>
