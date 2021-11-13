@@ -50,6 +50,10 @@
     margin-top:10px;
 }
 
+.to-detail p:hover{
+    color:#F7C325
+}
+
 .duration{
     display:flex;
     justify-content:flex-start;

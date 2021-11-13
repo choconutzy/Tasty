@@ -62,7 +62,7 @@ const BookmarkCard = () => {
                     </div>
                     <div className="more">
                         <div className="to-detail">
-                            <NavLink to="/detail-recipe" style={linkStyle}>Read More</NavLink>
+                            <NavLink to="/detail-recipe" style={linkStyle}><p>Read More</p></NavLink>
                         </div>
                     </div>
                 </div>

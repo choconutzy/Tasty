@@ -1,13 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
+import { DetailProvider } from "./context/detail-context";
 import { MealsProvider } from "./context/meals-context";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
     <MealsProvider>
-      <App />
+      <DetailProvider>
+        <App />
+      </DetailProvider>
     </MealsProvider>
   </React.StrictMode>,
   document.getElementById("root")

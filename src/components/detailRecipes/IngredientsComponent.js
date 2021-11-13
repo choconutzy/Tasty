@@ -1,5 +1,7 @@
 import styled from "styled-components";
 import "../../styles/DetailRecipes.css";
+import { useContext } from "react";
+import { DetailContext } from "../../context/detail-context";
 
 const IngredientContainer = styled.div`
   width: 50%;
@@ -17,9 +19,22 @@ const DetailIngridient = styled.div`
 `;
 
 const IngredientComponent = () => {
+  const { detail } = useContext(DetailContext)
+  const ingredients = detail.ingredients
+  console.log(detail.ingredients)
   return (
     <IngredientContainer className="ingredients border">
-      <DetailIngridient>
+      {ingredients?.map((curr, index) => {
+        return(
+          <DetailIngridient key={index}>
+            <label class="container-checkbox">
+              <input type="checkbox" />{curr}
+              <span class="checkmark"></span>
+            </label>
+          </DetailIngridient>
+        )
+      })}
+      {/* <DetailIngridient>
         <label class="container-checkbox">
           <input type="checkbox" />3 tbps olive oil
           <span class="checkmark"></span>
@@ -62,7 +77,7 @@ const IngredientComponent = () => {
           <input type="checkbox" />5 tblsp tomato puree
           <span class="checkmark"></span>
         </label>
-      </DetailIngridient>
+      </DetailIngridient> */}
     </IngredientContainer>
   );
 };
