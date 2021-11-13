@@ -1,0 +1,207 @@
+:root {
+    font-family: sans-serif;
+    text-align: center;
+    --primary: #f7c325;
+    background: #161616;
+    color: #e8e8e8;
+    background-image: linear-gradient(-45deg, #090a0c 0%, #282b2c 100%);
+  }
+  .text-center {
+    text-align: center;
+    padding: 0;
+  }
+  
+  title.box {
+    margin: 30%;
+  }
+  
+  .titles.meals {
+    text-align: left;
+  }
+  .nav-container {
+    display: none;
+  }
+
+  .meals.box.title.box{
+    margin:0 10%;
+    text-align:center;
+  }
+  
+  .meals.box.mobile-set {
+    display: none;
+  }
+  
+  input {
+    margin: 2px 8px;
+    border-radius: 100%;
+  }
+  .border {
+    border-radius: 10px;
+    background: #282b2c;
+  }
+  
+  i {
+    color: var(--primary);
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .method {
+    margin: 20px 0;
+  }
+  
+  /* SCROLL STYLE */
+  .methode.box.border {
+    overflow: auto;
+    height: 360px;
+  }
+  
+  /* .methode.box.border::-webkit-scrollbar {
+    width: 10px;
+  } */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: #ebebeb;
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    -webkit-border-radius: 10px;
+    border-radius: 10px;
+    background: #f7c325;
+  }
+  
+  /* CHECKBOX STYLE */
+  /* The container */
+  .container-checkbox {
+    display: block;
+    position: relative;
+    padding-top: 2px;
+    padding-left: 33px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+  }
+  
+  /* Hide the browser's default checkbox */
+  .container-checkbox input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  /* Create a custom checkbox */
+  .container-checkbox .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 20px;
+    width: 20px;
+    background-color: #eee;
+    border-radius: 100%;
+  }
+  
+  /* On mouse-over, add a grey background color */
+  .container-checkbox:hover input ~ .checkmark {
+    background-color: #ccc;
+  }
+  
+  /* When the checkbox is checked, add a blue background */
+  .container-checkbox input:checked ~ .checkmark {
+    background-color: #f7c325;
+  }
+  
+  /* Create the checkmark/indicator (hidden when not checked) */
+  .container-checkbox .checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+  }
+  
+  /* Show the checkmark when checked */
+  .container-checkbox input:checked ~ .checkmark:after {
+    display: block;
+  }
+  
+  /* Style the checkmark/indicator */
+  .container-checkbox .checkmark:after {
+    left: 6px;
+    top: 3px;
+    width: 5px;
+    height: 8px;
+    border: solid #282c2c;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+  }
+  
+  @media screen and (max-width: 780px) {
+    .pad {
+      padding: 10%;
+    }
+    .titles.meals {
+      /* align-items: center;
+      align-content: center; */
+    }
+    .meals.box {
+      margin: 5%;
+      border-radius: 5px;
+      background: #282b2c;
+    }
+    .border {
+      border-radius: 0px;
+      border: none;
+      background: #282b2c;
+    }
+    .methode.box {
+      width: 100%;
+    }
+    .ingredients {
+      width: 100%;
+      padding: 0 25%;
+      /* display: none; */
+    }
+    .title.box {
+      display: none;
+    }
+    .d-none {
+      display: none;
+    }
+    .nav-item {
+      padding: 0px 10px;
+    }
+    .title-item {
+      padding: 0;
+      cursor: pointer;
+    }
+    .nav-item.active {
+      border-bottom: 4px solid #f7c325;
+      background: #282b2c;
+    }
+    .nav-item:hover {
+      border-bottom: 4px solid #e8e8e8;
+      cursor: pointer;
+    }
+    .nav-container {
+      display: flex;
+      justify-content: center;
+    }
+    .meals.box.mobile-set {
+      display: block;
+    }
+  }
+
+
+  @media screen and (min-width: 1413px){
+    .meals.box.title.box{
+      margin:0 20%;
+    }
+  }

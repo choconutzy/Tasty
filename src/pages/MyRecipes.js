@@ -1,9 +1,10 @@
 import React from "react";
+import BookmarkCard from "../components/myRecipes/BookmarkCard";
 
 const MyRecipes = () => {
   return (
     <div>
-      <h1 className="my-recipes">My Recipes</h1>
+      <BookmarkCard></BookmarkCard>
     </div>
   );
 };
