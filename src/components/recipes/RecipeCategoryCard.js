@@ -26,7 +26,7 @@ const RecipeCategoryCard = (props) => {
 
         {meals[category].map((meal) => (
           <div>
-            <RecipeCard key={meal.name} name={meal.name} image={meal.image} />
+            <RecipeCard key={meal.name} name={meal.name} image={meal.image} id={meal.id}/>
           </div>
         ))}
       </OverflowCard>
