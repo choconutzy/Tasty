@@ -5,6 +5,7 @@ import "../styles/DetailRecipes.css";
 import IngredientComponent from "../components/detailRecipes/IngredientsComponent";
 import MethodeComponent from "../components/detailRecipes/MethodeComponent";
 import { DetailContext } from "../context/detail-context";
+import { useParams } from "react-router";
 
 const MealsContainer = styled.div`
   display: flex;
@@ -63,6 +64,8 @@ const MethodContainer = styled.div`
 `;
 
 const DetailRecipes = () => {
+  let {id} = useParams()
+  console.log(id)
   const [tabShows, setTabShows] = useState("Ingredients");
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);

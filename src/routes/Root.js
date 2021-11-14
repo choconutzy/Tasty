@@ -10,13 +10,13 @@ import DetailRecipes from "../pages/DetailRecipes";
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<Home />} />
-      <Route path="my-recipes/" element={<MyRecipes />} />
-      <Route path="recipes" element={<Recipes />} />
-      <Route path="sign-in" element={<SignIn />} />
-      <Route path="sign-up" element={<SignUp />} />
-      <Route path="detail-recipe" element={<DetailRecipes/>}/>
-      <Route path="not-found" element={<NotFound />} />
+      <Route exact path="/" element={<Home />} />
+      <Route exact path="my-recipes" element={<MyRecipes />} />
+      <Route exact path="recipes" element={<Recipes />} />
+      <Route exact path="sign-in" element={<SignIn />} />
+      <Route exact path="sign-up" element={<SignUp />} />
+      <Route exact path="/:id" element={<DetailRecipes />} />
+      <Route exact path="not-found" element={<NotFound />} />
     </Routes>
   );
 }

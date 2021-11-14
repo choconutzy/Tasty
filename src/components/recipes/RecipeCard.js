@@ -3,6 +3,7 @@ import styled from "styled-components";
 import "../../styles/Recipes.css";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
+import { useBookmark } from "../../context/bookmarkContext";
 
 const RecipeCardContainer = styled.div`
   width: 350px;
@@ -44,20 +45,28 @@ const linkStyle = {
 }
 
 const RecipeCard = (props) => {
+  const bookmark = useBookmark()
+  console.log(bookmark.state.find(i=>i.name===props.name))
+  const findBookmark = bookmark.state.find(i=>i.id===props.id)
   const [click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
+  const handleClick = () =>{ 
+    setClick(!click)
+    click?  bookmark.dispatch({type: 'remove', name: props.name, id: props.id, image: props.image, isAdd: click}) : bookmark.dispatch({type: 'add', name: props.name, id: props.id, image:props.image, isAdd: click})
+  };
   return (
     <div>
       <RecipeCardContainer className="shadow-effect">
         <TopContainer>
-          <NavLink to='/detail-recipe' style={linkStyle}>
-            <div>
+          <NavLink to={`/${props.id}`} style={linkStyle}>
+            <div name={props.name} image={props.image} id={props.id}>
               <ImageStyled src={props.image}></ImageStyled>
               <h3>{props.name}</h3>
             </div>
           </NavLink>
           <BookmarkIcon onClick={handleClick}>
-            <i className={click ? "fas fa-bookmark fa-lg" : "far fa-bookmark fa-lg"}></i>
+            <i className={
+              findBookmark? "fas fa-bookmark fa-lg" :  
+              (click? "fas fa-bookmark fa-lg" : "far fa-bookmark fa-lg")}></i>
           </BookmarkIcon>
         </TopContainer>
       </RecipeCardContainer>
