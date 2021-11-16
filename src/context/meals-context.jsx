@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import { createContext, useEffect, useState, useContext } from "react";
 
 function createNewMeal(meal) {
   return {
@@ -69,4 +69,13 @@ export function MealsProvider({ children }) {
   console.log("CONTEXT", contextValue);
 
   return <MealsContext.Provider value={contextValue}>{children}</MealsContext.Provider>;
+}
+
+export const useMeals = () =>{
+  const context = useContext(MealsContext);
+  if(context === undefined){
+      throw new Error('useCount must be used within a Bookmark Provider')
+  }
+
+  return context
 }

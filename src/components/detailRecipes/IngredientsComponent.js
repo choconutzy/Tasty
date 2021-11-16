@@ -1,7 +1,5 @@
 import styled from "styled-components";
 import "../../styles/DetailRecipes.css";
-import { useContext } from "react";
-import { DetailContext } from "../../context/detail-context";
 
 const IngredientContainer = styled.div`
   width: 50%;
@@ -18,10 +16,9 @@ const DetailIngridient = styled.div`
   padding: 2px 10px;
 `;
 
-const IngredientComponent = () => {
-  const { detail } = useContext(DetailContext)
-  const ingredients = detail.ingredients
-  console.log(detail.ingredients)
+const IngredientComponent = ({ detail }) => {
+  const ingredients = detail?.ingredients
+  // console.log(detail.ingredients)
   return (
     <IngredientContainer className="ingredients border">
       {ingredients?.map((curr, index) => {
@@ -34,50 +31,6 @@ const IngredientComponent = () => {
           </DetailIngridient>
         )
       })}
-      {/* <DetailIngridient>
-        <label class="container-checkbox">
-          <input type="checkbox" />3 tbps olive oil
-          <span class="checkmark"></span>
-        </label>
-      </DetailIngridient>
-      <DetailIngridient>
-        <label class="container-checkbox">
-          <input type="checkbox" />2 chopped onions
-          <span class="checkmark"></span>
-        </label>
-      </DetailIngridient>
-      <DetailIngridient>
-        <label class="container-checkbox">
-          <input type="checkbox" />2 sticks salary
-          <span class="checkmark"></span>
-        </label>
-      </DetailIngridient>
-      <DetailIngridient>
-        <label class="container-checkbox">
-          <input type="checkbox" />
-          300g carrots
-          <span class="checkmark"></span>
-        </label>
-      </DetailIngridient>
-      <DetailIngridient>
-        <label class="container-checkbox">
-          <input type="checkbox" />
-          500g potatoes
-          <span class="checkmark"></span>
-        </label>
-      </DetailIngridient>
-      <DetailIngridient>
-        <label class="container-checkbox">
-          <input type="checkbox" />4 bay leaf
-          <span class="checkmark"></span>
-        </label>
-      </DetailIngridient>
-      <DetailIngridient>
-        <label class="container-checkbox">
-          <input type="checkbox" />5 tblsp tomato puree
-          <span class="checkmark"></span>
-        </label>
-      </DetailIngridient> */}
     </IngredientContainer>
   );
 };

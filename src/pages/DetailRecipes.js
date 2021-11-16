@@ -1,11 +1,12 @@
-import { useContext, useState } from "react";
-import useWindowDimensions from "../components/detailRecipes/DetailHelper";
+import { useState, useEffect } from "react";
+import useWindowDimensions from "../helpers/DetailHelper";
 import styled from "styled-components";
 import "../styles/DetailRecipes.css";
 import IngredientComponent from "../components/detailRecipes/IngredientsComponent";
 import MethodeComponent from "../components/detailRecipes/MethodeComponent";
-import { DetailContext } from "../context/detail-context";
 import { useParams } from "react-router";
+import { useBookmark } from "../context/bookmarkContext";
+import { detailExtractor } from "../helpers/detailExtractor";
 
 const MealsContainer = styled.div`
   display: flex;
@@ -64,26 +65,66 @@ const MethodContainer = styled.div`
 `;
 
 const DetailRecipes = () => {
-  let {id} = useParams()
-  console.log(id)
+  const { width } = useWindowDimensions();
+  const bookmark = useBookmark();
+  const [detailLocal, setDetailLocal] = useState([]);
+  console.log(detailLocal)
+  let { id } = useParams();
+  console.log(bookmark)
+  const activeRecipe = bookmark.state.find((i) => i.id === id);
+  console.log(activeRecipe)
+  console.log(id);
+  useEffect(() => {
+    const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
+    fetch(url)
+      .then((response) => response.json())
+      .then((responseMeals) => responseMeals.meals)
+      .then((data) => detailExtractor(data[0]))
+      .then(setDetailLocal);
+  }, [id]); // componentDidMount
   const [tabShows, setTabShows] = useState("Ingredients");
   const [click, setClick] = useState(false);
-  const handleClick = () => setClick(!click);
-  const { width } = useWindowDimensions();
-  const { detail } = useContext(DetailContext)
+  const handleClick = () =>  () => {
+    if (activeRecipe) {
+      bookmark.dispatch({
+        type: "remove",
+        name: detailLocal.title,
+        id: detailLocal.id,
+        image: detailLocal.image,
+        isAdd: click
+      });
+    } else {
+      setClick(click);
+      click
+        ? bookmark.dispatch({
+            type: "remove",
+            name: detailLocal.title,
+            id: detailLocal.id,
+            image: detailLocal.image,
+            isAdd: click
+          })
+        : bookmark.dispatch({
+            type: "add",
+            name: detailLocal.title,
+            id: detailLocal.id,
+            image: detailLocal.image,
+            isAdd: click
+          });
+    }
+  };
   let show = () => {
     if (width > 780) {
       return (
         <DetailContainer>
-          <IngredientComponent />
-          <MethodeComponent />
+          <IngredientComponent detail ={detailLocal} />
+          <MethodeComponent detail ={detailLocal} />
         </DetailContainer>
       );
     } else {
       return tabShows === "Ingredients" ? (
-        <IngredientComponent />
+        <IngredientComponent detail ={detailLocal} />
       ) : (
-        <MethodeComponent />
+        <MethodeComponent detail ={detailLocal} />
       );
     }
   };
@@ -93,18 +134,24 @@ const DetailRecipes = () => {
       <MealsContainer className="meals box pad">
         <BoxTitle>
           <div className="titles meals">
-            <h2>{detail.title}</h2>
+            <h2>{detailLocal?.title}</h2>
           </div>
           <StyledImageMeals
             className="image"
             src={
-              detail.image
+              detailLocal?.image
             }
           ></StyledImageMeals>
         </BoxTitle>
-        <BookmarkIcon onClick={handleClick}>
-          <i
-            className={click ? "fas fa-bookmark fa-lg" : "far fa-bookmark fa-lg"}
+        <BookmarkIcon>
+          <i  onClick={handleClick()}
+            className={
+            activeRecipe
+              ? "fas fa-bookmark fa-lg"
+              : click
+              ? "fas fa-bookmark fa-lg"
+              : "far fa-bookmark fa-lg"
+            }
           ></i>
         </BookmarkIcon>
       </MealsContainer>
