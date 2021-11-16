@@ -27,6 +27,7 @@ function createNewDetail(detail) {
     id: detail.idMeal,
     title: detail.strMeal,
     image: detail.strMealThumb,
+    category : detail.strCategory,
     method: mapped_method,
     ingredients: ingredients_measurements_mapping,
     lengthMethod: methode_mapping.length

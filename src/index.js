@@ -2,18 +2,15 @@ import React from "react";
 import ReactDOM from "react-dom";
 import App from "./App";
 import { BookmarkProvider } from "./context/bookmarkContext";
-import { DetailProvider } from "./context/detail-context";
 import { MealsProvider } from "./context/meals-context";
 import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <React.StrictMode>
     <MealsProvider>
-      <DetailProvider>
         <BookmarkProvider>
           <App />
         </BookmarkProvider>
-      </DetailProvider>
     </MealsProvider>
   </React.StrictMode>,
   document.getElementById("root")

@@ -50,8 +50,12 @@ const RecipeCard = (props) => {
   const findBookmark = bookmark.state.find(i=>i.id===props.id)
   const [click, setClick] = useState(false);
   const handleClick = () =>{ 
-    setClick(!click)
-    click?  bookmark.dispatch({type: 'remove', name: props.name, id: props.id, image: props.image, isAdd: click}) : bookmark.dispatch({type: 'add', name: props.name, id: props.id, image:props.image, isAdd: click})
+    if(findBookmark){
+      bookmark.dispatch({type: 'remove', name: props.name, id: props.id, image: props.image, isAdd: click}) 
+    } else{
+      setClick(click)
+      click? bookmark.dispatch({type: 'remove', name: props.name, id: props.id, image: props.image, isAdd: click}) : bookmark.dispatch({type: 'add', name: props.name, id: props.id, image:props.image, isAdd: click})
+    }
   };
   return (
     <div>
@@ -65,8 +69,9 @@ const RecipeCard = (props) => {
           </NavLink>
           <BookmarkIcon onClick={handleClick}>
             <i className={
-              findBookmark? "fas fa-bookmark fa-lg" :  
-              (click? "fas fa-bookmark fa-lg" : "far fa-bookmark fa-lg")}></i>
+              findBookmark? "fas fa-bookmark fa-lg" : click? "fas fa-bookmark fa-lg" :  
+              "far fa-bookmark fa-lg"
+              }></i>
           </BookmarkIcon>
         </TopContainer>
       </RecipeCardContainer>
