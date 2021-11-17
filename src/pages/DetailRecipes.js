@@ -4,7 +4,7 @@ import styled from "styled-components";
 import "../styles/DetailRecipes.css";
 import IngredientComponent from "../components/detailRecipes/IngredientsComponent";
 import MethodeComponent from "../components/detailRecipes/MethodeComponent";
-import { useParams } from "react-router";
+import { useParams } from "react-router-dom";
 import { useBookmark } from "../context/bookmarkContext";
 import { detailExtractor } from "../helpers/detailExtractor";
 import { useNavigate } from "react-router-dom";
@@ -66,7 +66,7 @@ const MethodContainer = styled.div`
 `;
 
 const DetailRecipes = () => {
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { width } = useWindowDimensions();
   const bookmark = useBookmark();
   const [detailLocal, setDetailLocal] = useState([]);
@@ -82,19 +82,19 @@ const DetailRecipes = () => {
   }, [id]); // componentDidMount
   const [tabShows, setTabShows] = useState("Ingredients");
   const [click, setClick] = useState(false);
-  const Profil = JSON.parse(sessionStorage.getItem("isLoggedin"))
-  const handleClick = () =>  () => {
-    if(!Profil){
-      alert("Anda Harus Log In")
-      navigate('/sign-in')
-    }else{
+  const Profil = JSON.parse(sessionStorage.getItem("isLoggedin"));
+  const handleClick = () => () => {
+    if (!Profil) {
+      alert("Anda Harus Log In");
+      navigate("/sign-in");
+    } else {
       if (activeRecipe) {
         bookmark.dispatch({
           type: "remove",
           name: detailLocal.title,
           id: detailLocal.id,
           image: detailLocal.image,
-          isAdd: click
+          isAdd: click,
         });
       } else {
         setClick(click);
@@ -104,33 +104,28 @@ const DetailRecipes = () => {
               name: detailLocal.title,
               id: detailLocal.id,
               image: detailLocal.image,
-              isAdd: click
+              isAdd: click,
             })
           : bookmark.dispatch({
               type: "add",
               name: detailLocal.title,
               id: detailLocal.id,
               image: detailLocal.image,
-              isAdd: click
+              isAdd: click,
             });
       }
-
     }
   };
   let show = () => {
     if (width > 780) {
       return (
-          <DetailContainer>
-            <IngredientComponent detail ={detailLocal} />
-            <MethodeComponent detail ={detailLocal} />
-          </DetailContainer>
+        <DetailContainer>
+          <IngredientComponent detail={detailLocal} />
+          <MethodeComponent detail={detailLocal} />
+        </DetailContainer>
       );
     } else {
-      return tabShows === "Ingredients" ? (
-          <IngredientComponent detail ={detailLocal} />
-      ) : (
-          <MethodeComponent detail ={detailLocal} />
-      );
+      return tabShows === "Ingredients" ? <IngredientComponent detail={detailLocal} /> : <MethodeComponent detail={detailLocal} />;
     }
   };
   return (
@@ -141,23 +136,10 @@ const DetailRecipes = () => {
           <div className="titles meals">
             <h2>{detailLocal?.title}</h2>
           </div>
-          <StyledImageMeals
-            className="image"
-            src={
-              detailLocal?.image
-            }
-          ></StyledImageMeals>
+          <StyledImageMeals className="image" src={detailLocal?.image}></StyledImageMeals>
         </BoxTitle>
         <BookmarkIcon>
-          <i  onClick={handleClick()}
-            className={
-            activeRecipe
-              ? "fas fa-bookmark fa-lg"
-              : click
-              ? "fas fa-bookmark fa-lg"
-              : "far fa-bookmark fa-lg"
-            }
-          ></i>
+          <i onClick={handleClick()} className={activeRecipe ? "fas fa-bookmark fa-lg" : click ? "fas fa-bookmark fa-lg" : "far fa-bookmark fa-lg"}></i>
         </BookmarkIcon>
       </MealsContainer>
       <DetailContainer className="meals box title box">
@@ -169,18 +151,10 @@ const DetailRecipes = () => {
         </MethodContainer>
       </DetailContainer>
       <div className="nav-container">
-        <div
-          className={
-            tabShows === "Ingredients" ? "nav-item active" : "nav-item"
-          }
-          onClick={() => setTabShows("Ingredients")}
-        >
+        <div className={tabShows === "Ingredients" ? "nav-item active" : "nav-item"} onClick={() => setTabShows("Ingredients")}>
           <h4>Ingredients</h4>
         </div>
-        <div
-          className={tabShows === "Methode" ? "nav-item active" : "nav-item"}
-          onClick={() => setTabShows("Methode")}
-        >
+        <div className={tabShows === "Methode" ? "nav-item active" : "nav-item"} onClick={() => setTabShows("Methode")}>
           <h4>Method</h4>
         </div>
       </div>
