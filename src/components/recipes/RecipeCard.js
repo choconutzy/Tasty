@@ -4,6 +4,7 @@ import "../../styles/Recipes.css";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useBookmark } from "../../context/bookmarkContext";
+import { useNavigate } from "react-router";
 
 const RecipeCardContainer = styled.div`
   width: 350px;
@@ -45,6 +46,7 @@ const linkStyle = {
 }
 
 const RecipeCard = (props) => {
+  const navigate = useNavigate()
   const bookmark = useBookmark()
   const Profil = JSON.parse(sessionStorage.getItem("isLoggedin"))
   const findBookmark = bookmark.state.find(i=>i.id===props.id)
@@ -53,6 +55,7 @@ const RecipeCard = (props) => {
   const handleClick = () =>{ 
     if(!Profil){
       alert("Anda Harus Log In")
+      navigate('/sign-in')
     } else{
       if(findBookmark){
         bookmark.dispatch({type: 'remove', name: props.name, id: props.id, image: props.image, isAdd: click}) 
