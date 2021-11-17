@@ -7,7 +7,7 @@ import MethodeComponent from "../components/detailRecipes/MethodeComponent";
 import { useParams } from "react-router";
 import { useBookmark } from "../context/bookmarkContext";
 import { detailExtractor } from "../helpers/detailExtractor";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const MealsContainer = styled.div`
   display: flex;
@@ -70,12 +70,8 @@ const DetailRecipes = () => {
   const { width } = useWindowDimensions();
   const bookmark = useBookmark();
   const [detailLocal, setDetailLocal] = useState([]);
-  console.log(detailLocal)
   let { id } = useParams();
-  console.log(bookmark)
   const activeRecipe = bookmark.state.find((i) => i.id === id);
-  console.log(activeRecipe)
-  console.log(id);
   useEffect(() => {
     const url = `https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`;
     fetch(url)
@@ -124,16 +120,16 @@ const DetailRecipes = () => {
   let show = () => {
     if (width > 780) {
       return (
-        <DetailContainer>
-          <IngredientComponent detail ={detailLocal} />
-          <MethodeComponent detail ={detailLocal} />
-        </DetailContainer>
+          <DetailContainer>
+            <IngredientComponent detail ={detailLocal} />
+            <MethodeComponent detail ={detailLocal} />
+          </DetailContainer>
       );
     } else {
       return tabShows === "Ingredients" ? (
-        <IngredientComponent detail ={detailLocal} />
+          <IngredientComponent detail ={detailLocal} />
       ) : (
-        <MethodeComponent detail ={detailLocal} />
+          <MethodeComponent detail ={detailLocal} />
       );
     }
   };

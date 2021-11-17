@@ -9,11 +9,8 @@ import validate from "../ValidateInfo";
 import { AuthContext } from "../../../context/auth-context";
 const Form = (props) => {
   const { addAuthUser } = useContext(AuthContext);
-  console.log("add auth user", addAuthUser);
 
   const { handleChange, values, handleSubmit, errors } = UseFormIn(props, validate, addAuthUser);
-  const { authUser } = useContext(AuthContext);
-  console.log("auth user", authUser);
   return (
     <>
       <div className="forms-container">

@@ -50,7 +50,6 @@ const RecipeCard = (props) => {
   const bookmark = useBookmark()
   const Profil = JSON.parse(sessionStorage.getItem("isLoggedin"))
   const findBookmark = bookmark.state.find(i=>i.id===props.id)
-  console.log(Profil)
   const [click, setClick] = useState(false);
   const handleClick = () =>{ 
     if(!Profil){

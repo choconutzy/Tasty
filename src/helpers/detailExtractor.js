@@ -20,7 +20,6 @@ export function detailExtractor(detail) {
     const mapped_method = methode_mapping.map((item) =>
       item.replace("\r\n", " ")
     );
-    console.log(methode_mapping);
     return {
       id: detail.idMeal,
       title: detail.strMeal,

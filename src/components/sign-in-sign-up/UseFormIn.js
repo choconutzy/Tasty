@@ -27,11 +27,6 @@ const UseFormIn = (props, validate, addAuthUser) => {
   useEffect(() => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
       handleLogin(values);
-
-      const usersExistData = JSON.parse(localStorage.getItem("usersdata"));
-      const detailUser = usersExistData.find((e) => e.username === values.username);
-      addAuthUser("anggi");
-      console.log("detailuser", detailUser);
     }
   }, [errors, isSubmitting, values, handleLogin, addAuthUser]);
 

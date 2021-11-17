@@ -24,10 +24,10 @@ const IngredientComponent = ({ detail }) => {
       {ingredients?.map((curr, index) => {
         return (
           <DetailIngridient key={index}>
-            <label class="container-checkbox">
+            <label className="container-checkbox">
               <input type="checkbox" />
               {curr}
-              <span class="checkmark"></span>
+              <span className="checkmark"></span>
             </label>
           </DetailIngridient>
         );
