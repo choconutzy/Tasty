@@ -18,11 +18,6 @@ const RecipeCategoryCard = (props) => {
   return (
     <div>
       <OverflowCard className="overflow-card">
-        {console.log(category)}
-
-        {console.log(meals[category])}
-
-        {meals[category].map((meal) => console.log(meal))}
 
         {meals[category].map((meal) => (
           <div>

@@ -17,7 +17,7 @@ function Dropdown(props) {
         {MenuItems.map((item, index) => {
           return (
             <li key={index}>
-              <p className={item.cName} to={item.path} onClick={props.onLogout}>
+              <p className={item.cName} to={item.path} onClick={item.title === "Sign-out" && props.onLogout}>
                 <i className={item.icon} style={{ color: "white" }}></i>
                 {item.title === "Username" ? " " + username : " " + item.title}
               </p>
