@@ -10,7 +10,7 @@ const RecipeCardContainer = styled.div`
   width: 350px;
   height: auto;
   border-radius: 10px;
-  background: #282c2c;
+  background: #393d3d;
   margin: 0px 5px 20px 5px;
   padding: 10px 3px 3px 20px;
   text-align: left;
