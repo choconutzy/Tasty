@@ -8,6 +8,7 @@ import { useParams } from "react-router-dom";
 import { useBookmark } from "../context/bookmarkContext";
 import { detailExtractor } from "../helpers/detailExtractor";
 import { useNavigate } from "react-router-dom";
+import Layout from '../layouts'
 
 const MealsContainer = styled.div`
   display: flex;
@@ -130,35 +131,37 @@ const DetailRecipes = () => {
   };
   return (
     <div>
-      {/* <h2 className="mt-6">Detail Recipe</h2> */}
-      <MealsContainer className="meals box pad">
-        <BoxTitle>
-          <div className="titles meals">
-            <h2>{detailLocal?.title}</h2>
+      <Layout>
+        <MealsContainer className="meals box pad">
+          <BoxTitle>
+            <div className="titles meals">
+              <h2>{detailLocal?.title}</h2>
+            </div>
+            <StyledImageMeals className="image" src={detailLocal?.image}></StyledImageMeals>
+          </BoxTitle>
+          <BookmarkIcon>
+            <i onClick={handleClick()} className={activeRecipe ? "fas fa-bookmark fa-lg" : click ? "fas fa-bookmark fa-lg" : "far fa-bookmark fa-lg"}></i>
+          </BookmarkIcon>
+        </MealsContainer>
+        <DetailContainer className="meals box title box">
+          <IngredientContainer className="text-center ingredient">
+            <h6 className="text-start">Ingredients</h6>
+          </IngredientContainer>
+          <MethodContainer className="text-center methode">
+            <h6 className="text-start">Method</h6>
+          </MethodContainer>
+        </DetailContainer>
+        <div className="nav-container">
+          <div className={tabShows === "Ingredients" ? "nav-item active" : "nav-item"} onClick={() => setTabShows("Ingredients")}>
+            <h4>Ingredients</h4>
           </div>
-          <StyledImageMeals className="image" src={detailLocal?.image}></StyledImageMeals>
-        </BoxTitle>
-        <BookmarkIcon>
-          <i onClick={handleClick()} className={activeRecipe ? "fas fa-bookmark fa-lg" : click ? "fas fa-bookmark fa-lg" : "far fa-bookmark fa-lg"}></i>
-        </BookmarkIcon>
-      </MealsContainer>
-      <DetailContainer className="meals box title box">
-        <IngredientContainer className="text-center ingredient">
-          <h6 className="text-start">Ingredients</h6>
-        </IngredientContainer>
-        <MethodContainer className="text-center methode">
-          <h6 className="text-start">Method</h6>
-        </MethodContainer>
-      </DetailContainer>
-      <div className="nav-container">
-        <div className={tabShows === "Ingredients" ? "nav-item active" : "nav-item"} onClick={() => setTabShows("Ingredients")}>
-          <h4>Ingredients</h4>
+          <div className={tabShows === "Methode" ? "nav-item active" : "nav-item"} onClick={() => setTabShows("Methode")}>
+            <h4>Method</h4>
+          </div>
         </div>
-        <div className={tabShows === "Methode" ? "nav-item active" : "nav-item"} onClick={() => setTabShows("Methode")}>
-          <h4>Method</h4>
-        </div>
-      </div>
-      <DetailContainer className="meals box">{show()}</DetailContainer>
+        <DetailContainer className="meals box">{show()}</DetailContainer>
+
+      </Layout>
     </div>
   );
 };
