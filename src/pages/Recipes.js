@@ -3,6 +3,7 @@ import RecipeJumbotronCard from "../components/recipes/RecipeJumbotron";
 import RecipeCategoryCard from "../components/recipes/RecipeCategoryCard";
 import "../styles/Recipes.css";
 import styled from "styled-components";
+import Layout from "../layouts";
 
 const TitleCategory = styled.h3`
   text-align: left;
@@ -12,17 +13,19 @@ const TitleCategory = styled.h3`
 
 const Recipes = () => {
   return (
-    <div>
-      <RecipeJumbotronCard></RecipeJumbotronCard>
-      <TitleCategory>Popular recipes</TitleCategory>
-      <RecipeCategoryCard category="popular"></RecipeCategoryCard>
-      <TitleCategory>Chinese Cuisine</TitleCategory>
-      <RecipeCategoryCard category="chinese"></RecipeCategoryCard>
-      <TitleCategory>Vegetarian</TitleCategory>
-      <RecipeCategoryCard category="vegetarian"></RecipeCategoryCard>
-      <TitleCategory>Beef</TitleCategory>
-      <RecipeCategoryCard category="beef"></RecipeCategoryCard>
-    </div>
+    <Layout>
+      <div>
+        <RecipeJumbotronCard></RecipeJumbotronCard>
+        <TitleCategory>Popular recipes</TitleCategory>
+        <RecipeCategoryCard category="popular"></RecipeCategoryCard>
+        <TitleCategory>Chinese Cuisine</TitleCategory>
+        <RecipeCategoryCard category="chinese"></RecipeCategoryCard>
+        <TitleCategory>Vegetarian</TitleCategory>
+        <RecipeCategoryCard category="vegetarian"></RecipeCategoryCard>
+        <TitleCategory>Beef</TitleCategory>
+        <RecipeCategoryCard category="beef"></RecipeCategoryCard>
+      </div>
+    </Layout>
   );
 };
 export default Recipes;

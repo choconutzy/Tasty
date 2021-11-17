@@ -3,14 +3,15 @@ export default function ValidateInfo(values) {
 
   const usersExistData = JSON.parse(localStorage.getItem("usersdata")) || [];
   const isUsernameExist = usersExistData.find((e) => e.username === values.username);
+  const isEmailExist = usersExistData.find((e) => e.email === values.email);
 
   if ("username" in values) {
     //username
 
     if (!values.username.trim()) {
       errors.username = "username Required";
-    } else if (!isUsernameExist) {
-      errors.username = "this username not register yet";
+    } else if (isUsernameExist) {
+      errors.username = "This username already exists";
     }
   }
 
@@ -21,6 +22,8 @@ export default function ValidateInfo(values) {
       errors.email = "Email Required";
     } else if (!/\S+@\S+\.\S+/.test(values.email)) {
       errors.email = "Email address is invalid";
+    } else if (isEmailExist) {
+      errors.email = "This email already exists";
     }
   }
 
