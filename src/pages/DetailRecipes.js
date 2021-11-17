@@ -7,6 +7,7 @@ import MethodeComponent from "../components/detailRecipes/MethodeComponent";
 import { useParams } from "react-router";
 import { useBookmark } from "../context/bookmarkContext";
 import { detailExtractor } from "../helpers/detailExtractor";
+import { useNavigate } from "react-router";
 
 const MealsContainer = styled.div`
   display: flex;
@@ -65,6 +66,7 @@ const MethodContainer = styled.div`
 `;
 
 const DetailRecipes = () => {
+  const navigate = useNavigate()
   const { width } = useWindowDimensions();
   const bookmark = useBookmark();
   const [detailLocal, setDetailLocal] = useState([]);
@@ -88,6 +90,7 @@ const DetailRecipes = () => {
   const handleClick = () =>  () => {
     if(!Profil){
       alert("Anda Harus Log In")
+      navigate('/sign-in')
     }else{
       if (activeRecipe) {
         bookmark.dispatch({

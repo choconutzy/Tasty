@@ -13,6 +13,7 @@ import noodle from "../images/Noodle.png";
 import soup from "../images/Soup.png";
 import orangejuice from "../images/orangeJuice.png";
 import Layout from "../layouts";
+import { NavLink } from "react-router-dom";
 
 const StyledWelcome = styled.div`
   text-align: left;
@@ -89,7 +90,9 @@ const Home = () => {
               <p className="m-sm">Search your favourite meals recipes and save it to your collections</p>
             </div>
             <div className="button-center">
-              <StyledButton className="button m-sm">Getting Started</StyledButton>
+            <NavLink to="/sign-in">
+                <StyledButton className="button m-sm">Getting Started</StyledButton>
+            </NavLink>
             </div>
           </StyledWelcome>
           <StyledImage className="img jumbotron item" src={pic}></StyledImage>
