@@ -4,7 +4,7 @@ import "../../styles/Recipes.css";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
 import { useBookmark } from "../../context/bookmarkContext";
-import { useNavigate } from "react-router";
+import { useNavigate } from "react-router-dom";
 
 const RecipeCardContainer = styled.div`
   width: 350px;
@@ -34,33 +34,33 @@ const BookmarkIcon = styled.div`
   justify-content: end;
   margin-top: 2%;
   margin-right: 3%;
-  &&:hover{
+  &&:hover {
     cursor: pointer;
   }
 `;
 
 const linkStyle = {
   textDecoration: "none",
-  color: '#e8e8e8',
-  cursor: 'pointer'
-}
+  color: "#e8e8e8",
+  cursor: "pointer",
+};
 
 const RecipeCard = (props) => {
-  const navigate = useNavigate()
-  const bookmark = useBookmark()
-  const Profil = JSON.parse(sessionStorage.getItem("isLoggedin"))
-  const findBookmark = bookmark.state.find(i=>i.id===props.id)
+  const navigate = useNavigate();
+  const bookmark = useBookmark();
+  const Profil = JSON.parse(sessionStorage.getItem("isLoggedin"));
+  const findBookmark = bookmark.state.find((i) => i.id === props.id);
   const [click, setClick] = useState(false);
-  const handleClick = () =>{ 
-    if(!Profil){
-      alert("Anda Harus Log In")
-      navigate('/sign-in')
-    } else{
-      if(findBookmark){
-        bookmark.dispatch({type: 'remove', name: props.name, id: props.id, image: props.image, isAdd: click}) 
-      } else{
-        setClick(click)
-        click? bookmark.dispatch({type: 'remove', name: props.name, id: props.id, image: props.image, isAdd: click}) : bookmark.dispatch({type: 'add', name: props.name, id: props.id, image:props.image, isAdd: click})
+  const handleClick = () => {
+    if (!Profil) {
+      alert("Anda Harus Log In");
+      navigate("/sign-in");
+    } else {
+      if (findBookmark) {
+        bookmark.dispatch({ type: "remove", name: props.name, id: props.id, image: props.image, isAdd: click });
+      } else {
+        setClick(click);
+        click ? bookmark.dispatch({ type: "remove", name: props.name, id: props.id, image: props.image, isAdd: click }) : bookmark.dispatch({ type: "add", name: props.name, id: props.id, image: props.image, isAdd: click });
       }
     }
   };
@@ -75,12 +75,7 @@ const RecipeCard = (props) => {
             </div>
           </NavLink>
           <BookmarkIcon onClick={handleClick}>
-            <i className={
-              !Profil? "far fa-bookmark fa-lg" :
-              findBookmark? "fas fa-bookmark fa-lg" : 
-              click? "fas fa-bookmark fa-lg" :  
-              "far fa-bookmark fa-lg"
-              }></i>
+            <i className={!Profil ? "far fa-bookmark fa-lg" : findBookmark ? "fas fa-bookmark fa-lg" : click ? "fas fa-bookmark fa-lg" : "far fa-bookmark fa-lg"}></i>
           </BookmarkIcon>
         </TopContainer>
       </RecipeCardContainer>
