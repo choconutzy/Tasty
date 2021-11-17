@@ -160,7 +160,6 @@ const DetailRecipes = () => {
           </div>
         </div>
         <DetailContainer className="meals box">{show()}</DetailContainer>
-
       </Layout>
     </div>
   );
