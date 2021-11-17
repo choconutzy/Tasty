@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-
 function IsSignUp() {
   const [isLoggedin, setIsLoggedIn] = useState(sessionStorage.getItem("isLoggedin") === "1");
 
@@ -24,6 +23,7 @@ function IsSignUp() {
     sessionStorage.removeItem("authuser");
     sessionStorage.removeItem("isLoggedin");
     setIsLoggedIn(false);
+    window.location.reload();
   };
 
   return { loginHandler, logoutHandler, isLoggedin };

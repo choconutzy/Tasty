@@ -66,8 +66,6 @@ export function MealsProvider({ children }) {
     },
   };
 
-  console.log("CONTEXT", contextValue);
-
   return <MealsContext.Provider value={contextValue}>{children}</MealsContext.Provider>;
 }
 

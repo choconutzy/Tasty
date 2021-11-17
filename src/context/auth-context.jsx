@@ -1,4 +1,4 @@
-import React, { createContext, useState, useEffect } from "react";
+import React, { createContext, useState } from "react";
 
 export const AuthContext = createContext();
 
@@ -8,11 +8,6 @@ const AuthProvider = (props) => {
   const addAuthUser = (username, email, password) => {
     setAuthUser({ username, email, password });
   };
-
-  //   useEffect(() => {
-  //     const newestUser = JSON.parse(sessionStorage.getItem("authuser"));
-  //     setAuthUser(newestUser);
-  //   }, []); // componentDidMount
 
   return <AuthContext.Provider value={{ authUser, addAuthUser }}>{props.children}</AuthContext.Provider>;
 };
