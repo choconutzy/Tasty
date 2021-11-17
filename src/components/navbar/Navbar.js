@@ -5,11 +5,13 @@ import "./Navbar.css";
 import Dropdown from "./Dropdown";
 import logo from "../../images/Logo.png";
 import { StyledLogo, StyledNavLink } from "../../styles/Navbar";
-
 // hide navbar on some pages
 const pathsToHide = ["/sign-up", "/sign-in"];
 
-function Navbar() {
+function Navbar(props) {
+  const checkLoggedin = props.checkLoggedin;
+  const logoutHandler = props.onLogout;
+
   const [click, setClick] = useState(false);
   const [dropdown, setDropdown] = useState(false);
   const handleClick = () => setClick(!click);
@@ -30,6 +32,8 @@ function Navbar() {
       setDropdown(false);
     }
   };
+
+  // const [checkLoggedin] = useState(props.checkLoggedin);
 
   // hide navbar on some pages
   const { pathname } = useLocation();
@@ -62,21 +66,26 @@ function Navbar() {
               <StyledNavLink>My Recipes</StyledNavLink>
             </NavLink>
           </li>
-          <li className="nav-item" onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
-            <NavLink to={pathname} className="nav-links" onClick={closeMobileMenu}>
-              <StyledNavLink>
-                <i className="fas fa-user-circle"></i> <i className="fas fa-caret-down" />
-              </StyledNavLink>
-            </NavLink>
-            {dropdown && <Dropdown />}
-          </li>
+          {/* Khusus Sign in user */}
+          {checkLoggedin && (
+            <li className={"nav-item" + checkLoggedin ? "" : "hidden"} onMouseEnter={onMouseEnter} onMouseLeave={onMouseLeave}>
+              <NavLink to={pathname} className="nav-links" onClick={closeMobileMenu}>
+                <StyledNavLink>
+                  <i className="fas fa-user-circle"></i> <i className="fas fa-caret-down" />
+                </StyledNavLink>
+              </NavLink>
+
+              {dropdown && <Dropdown onLogout={logoutHandler} />}
+            </li>
+          )}
           <li className="nav-item">
             <NavLink to="/sign-up" className="nav-links-mobile" onClick={closeMobileMenu}>
-              <StyledNavLink>Sign Up</StyledNavLink>
+              <StyledNavLink>Keluar</StyledNavLink>
             </NavLink>
           </li>
         </ul>
-        <Button />
+        {/* khusus user yang belum signin */}
+        {!checkLoggedin && <Button />}
       </nav>
     </>
   );

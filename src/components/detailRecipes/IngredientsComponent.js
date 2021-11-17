@@ -17,19 +17,20 @@ const DetailIngridient = styled.div`
 `;
 
 const IngredientComponent = ({ detail }) => {
-  const ingredients = detail?.ingredients
-  // console.log(detail.ingredients)
+  const ingredients = detail?.ingredients;
+
   return (
     <IngredientContainer className="ingredients border">
       {ingredients?.map((curr, index) => {
-        return(
+        return (
           <DetailIngridient key={index}>
             <label class="container-checkbox">
-              <input type="checkbox" />{curr}
+              <input type="checkbox" />
+              {curr}
               <span class="checkmark"></span>
             </label>
           </DetailIngridient>
-        )
+        );
       })}
     </IngredientContainer>
   );

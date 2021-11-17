@@ -1,35 +1,41 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { StyledLogo } from "../../../styles/Navbar";
 import logo from "../../../images/Logo.png";
-import "../styles/Style.css";
+import "../../../styles/sign-in-out.css";
 import Button from "../../UI/Button";
-import SigninFunction from "../SigninFunction";
+import UseFormIn from "../UseFormIn";
 import validate from "../ValidateInfo";
-const Form = (submitForm) => {
-  const { handleChange, values, handleSubmit, errors } = SigninFunction(submitForm, validate);
+import { AuthContext } from "../../../context/auth-context";
+const Form = (props) => {
+  const { addAuthUser } = useContext(AuthContext);
+  console.log("add auth user", addAuthUser);
 
+  const { handleChange, values, handleSubmit, errors } = UseFormIn(props, validate, addAuthUser);
+  const { authUser } = useContext(AuthContext);
+  console.log("auth user", authUser);
   return (
     <>
       <div className="forms-container">
         <div className="signin-signup">
           <form onSubmit={handleSubmit} className="sign-in-form">
             <StyledLogo src={logo} alt="Logo" />
+            <h2 className="title">Sign In</h2>
             <div className="form-input">
-              <h2 className="title">Sign In</h2>
               <div className="input-field">
                 <i className="fas fa-user"></i>
-                <input id="username" type="text" nama="username" placeholder="Username" value={values.username} onChange={handleChange} />
+                <input id="username" type="username" placeholder="username" name="username" values={values.username} onChange={handleChange} />
               </div>
               {errors.username && <p>{errors.username}</p>}
             </div>
             <div className="form-input">
               <div className="input-field">
                 <i className="fas fa-lock"></i>
-                <input id="password" type="password" placeholder="Password" name="password" value={values.password} onChange={handleChange} />
+                <input id="password" type="password" placeholder="Password" name="password" values={values.password} onChange={handleChange} />
               </div>
               {errors.password && <p>{errors.password}</p>}
             </div>
+
             <Button label="Sign in" />
 
             <span className="ask-register-login">

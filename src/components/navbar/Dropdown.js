@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import { MenuItems } from "./MenuItems";
-import { NavLink } from "react-router-dom";
 import "./Dropdown.css";
 
-function Dropdown() {
+function Dropdown(props) {
+  // auth user
+  const authUser = JSON.parse(sessionStorage.getItem("authuser"));
+  let username = "username";
+  if (authUser && authUser !== undefined) {
+    username = authUser.username;
+  }
   const [click, setClick] = useState(false);
   const handleClick = () => setClick(!click);
   return (
@@ -12,10 +17,10 @@ function Dropdown() {
         {MenuItems.map((item, index) => {
           return (
             <li key={index}>
-              <NavLink className={item.cName} to={item.path} onClick={() => setClick(false)}>
-                <i className={item.icon}></i>
-                {" " + item.title}
-              </NavLink>
+              <p className={item.cName} to={item.path} onClick={props.onLogout}>
+                <i className={item.icon} style={{ color: "white" }}></i>
+                {item.title === "Username" ? " " + username : " " + item.title}
+              </p>
             </li>
           );
         })}

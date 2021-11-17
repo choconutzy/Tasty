@@ -1,13 +1,14 @@
 import React from "react";
-import "../styles/Style.css";
+import "../../../styles/sign-in-out.css";
 import { NavLink } from "react-router-dom";
 import { StyledLogo } from "../../../styles/Navbar";
 import logo from "../../../images/Logo.png";
 import Button from "../../UI/Button";
-import useForm from "../useForm";
-import validate from "../ValidateInfo";
-const Form = (submitForm) => {
-  const { handleChange, values, handleSubmit, errors } = useForm(submitForm, validate);
+import UseFormUp from "../UseFormUp";
+import validate from "../ValidateInfoUp";
+const Form = (props) => {
+  const { handleChange, values, handleSubmit, errors } = UseFormUp(props, validate);
+
   return (
     <>
       <div className="forms-container">

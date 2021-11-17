@@ -1,6 +1,6 @@
 import React from "react";
 import registerImg from "../../../images/registerImg.svg";
-import "../styles/Style.css";
+import "../../../styles/sign-in-out.css";
 
 function Panel() {
   return (

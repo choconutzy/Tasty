@@ -1,6 +1,6 @@
 import React from "react";
 import loginImg from "../../../images/loginImg.svg";
-import "../styles/Style.css";
+import "../../../styles/sign-in-out.css";
 
 export default function Panel() {
   return (
