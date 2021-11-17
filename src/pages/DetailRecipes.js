@@ -8,7 +8,7 @@ import { useParams } from "react-router-dom";
 import { useBookmark } from "../context/bookmarkContext";
 import { detailExtractor } from "../helpers/detailExtractor";
 import { useNavigate } from "react-router-dom";
-import Layout from "../layouts";
+import Layout from '../layouts'
 
 const MealsContainer = styled.div`
   display: flex;
