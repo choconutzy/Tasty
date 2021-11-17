@@ -84,32 +84,38 @@ const DetailRecipes = () => {
   }, [id]); // componentDidMount
   const [tabShows, setTabShows] = useState("Ingredients");
   const [click, setClick] = useState(false);
+  const Profil = JSON.parse(sessionStorage.getItem("isLoggedin"))
   const handleClick = () =>  () => {
-    if (activeRecipe) {
-      bookmark.dispatch({
-        type: "remove",
-        name: detailLocal.title,
-        id: detailLocal.id,
-        image: detailLocal.image,
-        isAdd: click
-      });
-    } else {
-      setClick(click);
-      click
-        ? bookmark.dispatch({
-            type: "remove",
-            name: detailLocal.title,
-            id: detailLocal.id,
-            image: detailLocal.image,
-            isAdd: click
-          })
-        : bookmark.dispatch({
-            type: "add",
-            name: detailLocal.title,
-            id: detailLocal.id,
-            image: detailLocal.image,
-            isAdd: click
-          });
+    if(!Profil){
+      alert("Anda Harus Log In")
+    }else{
+      if (activeRecipe) {
+        bookmark.dispatch({
+          type: "remove",
+          name: detailLocal.title,
+          id: detailLocal.id,
+          image: detailLocal.image,
+          isAdd: click
+        });
+      } else {
+        setClick(click);
+        click
+          ? bookmark.dispatch({
+              type: "remove",
+              name: detailLocal.title,
+              id: detailLocal.id,
+              image: detailLocal.image,
+              isAdd: click
+            })
+          : bookmark.dispatch({
+              type: "add",
+              name: detailLocal.title,
+              id: detailLocal.id,
+              image: detailLocal.image,
+              isAdd: click
+            });
+      }
+
     }
   };
   let show = () => {

@@ -1,5 +1,4 @@
 import React from "react";
-import RecipeJumbotronCard from "../components/recipes/RecipeJumbotron";
 import RecipeCategoryCard from "../components/recipes/RecipeCategoryCard";
 import "../styles/Recipes.css";
 import styled from "styled-components";
@@ -15,7 +14,6 @@ const Recipes = () => {
   return (
     <Layout>
       <div>
-        <RecipeJumbotronCard></RecipeJumbotronCard>
         <TitleCategory>Popular recipes</TitleCategory>
         <RecipeCategoryCard category="popular"></RecipeCategoryCard>
         <TitleCategory>Chinese Cuisine</TitleCategory>
